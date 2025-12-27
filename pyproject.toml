@@ -1,0 +1,51 @@
+[project]
+name = "photo-marketplace-search"
+version = "0.1.0"
+description = "Web app to convert photos into French marketplace search links using Claude Vision API"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "aiofiles>=25.1.0",
+    "anthropic>=0.75.0",
+    "beautifulsoup4>=4.14.3",
+    "fastapi>=0.127.1",
+    "httpx>=0.28.1",
+    "lxml>=6.0.2",
+    "pillow>=12.0.0",
+    "pydantic>=2.12.5",
+    "pydantic-settings>=2.12.0",
+    "python-dotenv>=1.2.1",
+    "python-multipart>=0.0.21",
+    "uvicorn[standard]>=0.40.0",
+]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "mypy>=1.19.1",
+    "pytest>=9.0.2",
+    "pytest-asyncio>=1.3.0",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.14.10",
+    "types-aiofiles>=25.1.0.20251011",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.13"
+warn_return_any = true
+warn_unused_ignores = false
+disallow_untyped_defs = false
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["src/tests"]
+asyncio_default_fixture_loop_scope = "function"
